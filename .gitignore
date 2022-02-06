@@ -1,0 +1,9 @@
+
+# bash file
+nohup.out
+
+# config file
+config.py
+
+# python
+__pycache__

@@ -1,0 +1,3 @@
+# 아래에 트위터에서 발급 받은 키를 넣고 파일명은 config.py로 바꿔주세요.
+# 키 발급 링크: https://developer.twitter.com/
+BEARER_TOKEN =  ""

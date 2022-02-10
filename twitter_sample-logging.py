@@ -4,6 +4,8 @@ import requests
 import os
 import tqdm
 import pymongo
+import logging
+from logging.config import dictConfig
 from config.config import (
     BEARER_TOKEN,
 )  # Twitter TOKEN 정보 불러오기 (발급 필요, 링크: https://developer.twitter.com/)
@@ -13,6 +15,30 @@ from config.config import (
 # bearer_token = os.environ.get("BEARER_TOKEN")
 # BEARER_TOKEN = ""
 KST = datetime.timezone(datetime.timedelta(hours=9))
+
+# logging 참고자료: https://www.daleseo.com/python-logging-config/
+dictConfig({
+    "version": 1,
+    "formatters": {
+        "default": {
+            "format": "[%(asctime)s] %(levelname)s [%(name)s] [%(filename)s:%(lineno)d]  %(message)s",
+        
+        }
+    },
+    "handlers": {
+        "file": {
+            "level": "WARNING",
+            'class': "logging.FileHandler",
+            "filename": "debug.log",
+            "formatter": "default",
+            
+        },
+    },
+    "root": {
+        "level": "WARNING",
+        "handlers": ["file"]
+    }
+})
 
 """
     Twitter API v2 calls 예시
@@ -40,4 +66,9 @@ for line in tqdm.tqdm(response.iter_lines(), mininterval=30, maxinterval=30):
     if line:
         tweet = json.loads(line)
         tweet["_timestamp"] = datetime.datetime.now(tz=KST).isoformat()  # timestamp 추가
-        mongo.twitter.tweet_sample.insert_one(tweet)  # 저장
+        try:
+            mongo.twitter.tweet_sample.insert_one(tweet)  # 저장
+        except Exception as e:
+            logging.error("Mongo {error}".format(error=e))
+    else:        
+        logging.error("Line is empty")

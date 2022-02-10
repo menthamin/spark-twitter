@@ -7,3 +7,6 @@ config.py
 
 # python
 __pycache__
+
+# logging
+debug.log

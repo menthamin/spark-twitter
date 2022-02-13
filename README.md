@@ -4,6 +4,9 @@ Spark example
 # Spark 연동
 - 참고자료: https://urame.tistory.com/entry/MongoDB-Spark-Connection-%ED%85%8C%EC%8A%A4%ED%8A%B8
 ```
+export PYSPARK_DRIVER_PYTHON="jupyter"
+export PYSPARK_DRIVER_PYTHON_OPTS="lab"
+
 pyspark --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1
 
 df = (spark.read.format("com.mongodb.spark.sql.DefaultSource").option("uri", "mongodb://localhost/twitter.tweet_sample").load())

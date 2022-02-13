@@ -10,6 +10,15 @@ __pycache__
 
 # logging
 debug.log
+derby.log
+*.log
 
 # install file
 *.tgz
+
+# jupyter
+.ipynb_checkpoints/
+
+# spark
+spark-warehouse/
+matastore_db/

@@ -70,5 +70,5 @@ for line in tqdm.tqdm(response.iter_lines(), mininterval=30, maxinterval=30):
         except Exception as e:
             logging.error("Read line error {error}".format(error=e))
             # raise RuntimeError("Mongo insert Fail")
-    else:
-        logging.error("Line is empty")
+    # else:
+    #     logging.error("Line is empty")

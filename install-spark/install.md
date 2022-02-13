@@ -8,6 +8,7 @@ sudo apt install default-jdk scala -y
 - 참고자료: https://dreamlog.tistory.com/607
 - 참고자료: https://computingforgeeks.com/how-to-install-apache-spark-on-ubuntu-debian/
 - 참고자료: https://surgach.tistory.com/86
+- mongodb 연동 참고자료: https://urame.tistory.com/entry/MongoDB-Spark-Connection-%ED%85%8C%EC%8A%A4%ED%8A%B8
 
 # 다운로드 
 ```bash
@@ -54,4 +55,11 @@ $ locate start-slave.sh
 # Spark 실행
 ```
 pyspark
+
+
+# 참고자료
+# pyspark 오류  : env: ‘jupyter’: No such file or directory
+# echo 'export PATH="~/anaconda/bin:$PATH"' >> ~/.bashrc 
+export PYSPARK_DRIVER_PYTHON="jupyter"
+export PYSPARK_DRIVER_PYTHON_OPTS="lab"
 ```

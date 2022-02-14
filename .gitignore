@@ -21,4 +21,4 @@ derby.log
 
 # spark
 spark-warehouse/
-matastore_db/
+metastore_db/

@@ -22,3 +22,7 @@ derby.log
 # spark
 spark-warehouse/
 metastore_db/
+
+# data
+ko_words_date.csv
+ko_words.csv
